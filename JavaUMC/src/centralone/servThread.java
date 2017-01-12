@@ -28,6 +28,7 @@ public class servThread extends Thread {
     /**
      * Avvia il thread, riceve le stringhe e le appende in un file
      */
+    @Override
     public void run() {
         try {
             stampa("Si è connesso " + client.getInetAddress());
@@ -59,6 +60,6 @@ public class servThread extends Thread {
      * @throws IOException 
      */
     private synchronized void scrivi(String daScrivere) throws IOException {
-        Files.write(Paths.get("ricevuti.txt"), daScrivere.getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("ricevuti.txt"), (daScrivere + "\n").getBytes(), StandardOpenOption.APPEND);
     }
 }
